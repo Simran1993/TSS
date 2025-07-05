@@ -15,8 +15,8 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
     @Override
     public CustomerDto createCustomer(CustomerDto customerDto) {
-        Customer customer= CustomerMapper.mapToCustomer(customerDto);// converted customerDto into jpa Entity
-        Customer savedCustomer =customerRepository.save(customer);
+        Customer customer= CustomerMapper.mapToCustomer(customerDto);// converted customerDto into jpa Entity(DTO is a server side only) and (Enitiy is a Step to save the data into database) got my point my bruhhh)
+        Customer savedCustomer =customerRepository.save(customer);// saving them in the databse by using the entity class
         return CustomerMapper.mapToCustomerDto(savedCustomer);
     }
 }
