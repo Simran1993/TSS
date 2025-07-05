@@ -5,10 +5,7 @@ import net.tiffinservice.ts.dto.CustomerDto;
 import net.tiffinservice.ts.service.CustomerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
@@ -22,5 +19,12 @@ public class CustomerController {
     public ResponseEntity<CustomerDto> createCusomerDto(@RequestBody CustomerDto customerDto){
         CustomerDto savedCustomer= customerService.createCustomer(customerDto);
         return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
+    }
+    // Build Get Customer Rest API
+    @GetMapping("{id}")
+    public ResponseEntity<CustomerDto> getCustomer(@PathVariable("id") Long customerID){
+        CustomerDto customerDto= customerService.GetCustomerById(customerID);
+        return  ResponseEntity.ok(customerDto);
+
     }
 }

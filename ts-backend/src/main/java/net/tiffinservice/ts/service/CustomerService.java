@@ -5,4 +5,5 @@ import net.tiffinservice.ts.dto.CustomerDto;
 public interface CustomerService {
 
     CustomerDto createCustomer(CustomerDto customerDto);
+    CustomerDto GetCustomerById(Long customerId);
 }
